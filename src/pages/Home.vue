@@ -4,6 +4,8 @@
     <section class="px-4 xl:px-20 py-10">
       <HeroProductList :heroProducts="heroProducts" />
     </section>
+    
+    <Services/>
     <section class="px-10 xl:px-64 py-10 mt-20">
       <div
         class="
@@ -37,8 +39,7 @@
         <ProductCard :products="storeProduct.product.slice(0, 8)" />
       </div>
     </section>
-    <Carousel />
-    <Companies />
+    <SpecialHero/>
     <section
       class="
         bg-stone-100
@@ -114,6 +115,7 @@
         </div>
       </div>
     </section>
+    <ContactMessage/>
   </ClientLayout>
 </template>
 
@@ -134,6 +136,9 @@ import gloves from "../assets/img/gloves.jpg";
 import { productStore } from "../store/productStore";
 import { authStore } from "../store/authStore";
 import ClientLayout from "../components/ClientLayout.vue";
+import ContactMessage from "../components/contactMessage.vue";
+import SpecialHero from "../components/SpecialHero.vue";
+import Services from "../components/Services.vue";
 export default {
   components: {
     Hero,
@@ -143,7 +148,10 @@ export default {
     Carousel,
     Companies,
     ClientLayout,
-  },
+    ContactMessage,
+    SpecialHero,
+    Services
+},
   setup() {
     const heroProducts = ref<HeroProduct[]>([
       {
