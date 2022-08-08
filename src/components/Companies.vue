@@ -33,10 +33,8 @@
         alt=""
         class="w-24 h-20 xl:w-32 xl:h-26"
       />
-    </div> 
-
-
-  </section> 
+    </div>
+  </section>
 </template>
 
 <style></style>
