@@ -13,6 +13,7 @@
         <h2 class="flex flex-col">
           <span class="font-medium text-4xl mb-2"> Popular Products </span>
         </h2>
+        
         <router-link
           to="/shop"
           class="border-b-2 border-b-black font-medium w-40"
@@ -20,6 +21,7 @@
           View all products
         </router-link>
       </div>
+      
       <div
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 relative"
       >

@@ -4,6 +4,7 @@
   >
     <div>
       <h3 class="text-2xl xl:text-4xl font-semibold">Our services</h3>
+      <div class="border-t-4 border-t-stone-200 mt-8 w-1/2"></div>
 
       <p class="mt-6">
         Our team does more than you fill your medication, at our pharmacy we
