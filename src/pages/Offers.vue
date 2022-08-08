@@ -84,60 +84,15 @@
         </table>
       </div>
 
-      <nav aria-label="navigation" class="mt-10 flex justify-end">
-        <ul class="inline-flex -space-x-px">
-          <li>
-            <a
-              href="#"
-              class="py-2 px-3 ml-0 leading-tight text-gray-500 bg-white rounded-l-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-              >Previous</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              aria-current="page"
-              class="py-2 px-3 text-blue-600 bg-blue-50 border border-gray-300 hover:bg-blue-100 hover:text-blue-700"
-              >1</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-              >2</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-              >3</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-              >4</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="py-2 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-              >5</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="py-2 px-3 leading-tight text-gray-500 bg-white rounded-r-lg border border-gray-300 hover:bg-gray-100 hover:text-gray-700"
-              >Next</a
-            >
-          </li>
-        </ul>
-      </nav>
+      <div class="flex justify-end mt-20">
+        <vue-awesome-paginate
+          :total-items="offerLn"
+          :items-per-page="10"
+          :max-pages-shown="5"
+          :current-page="1"
+          :on-click="onClickHandler"
+        />
+      </div>
     </section>
   </AdminLayout>
 </template>
@@ -146,6 +101,7 @@
 import AdminLayout from "../components/AdminLayout.vue";
 import router from "../router";
 import { offerStore } from "../store/offerStore";
+import { ref } from "vue";
 export default {
   components: { AdminLayout },
   setup() {
@@ -155,8 +111,17 @@ export default {
       localStorage.setItem("tercera_selectedOffer", JSON.stringify(offer));
       router.push("/offer-details");
     };
+    const offerLn = storeOffer.offers.length;
+    const currentOfferPage = ref(storeOffer.offers.slice(0, 20));
+    const onClickHandler = (page: number) => {
+      const start = (page - 1) * 20;
+      const end = page * 20;
+      currentOfferPage.value = storeOffer.offers.slice(start, end);
+    };
     return {
       storeOffer,
+      offerLn,
+      onClickHandler,
       handleOfferDetails,
     };
   },

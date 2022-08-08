@@ -23,7 +23,7 @@
       </div>
       <div class="flex justify-center mt-20">
         <vue-awesome-paginate
-          :total-items="storeProduct.product.length"
+          :total-items="lnth"
           :items-per-page="20"
           :max-pages-shown="5"
           :current-page="1"
@@ -47,6 +47,8 @@ export default {
   },
   setup() {
     const storeProduct = productStore();
+    const lnth=storeProduct.product.length;
+
     const products = storeProduct.getProducts();
     const currentProductPage = ref(storeProduct.product.slice(0, 20));
     const onClickHandler = (page: number) => {

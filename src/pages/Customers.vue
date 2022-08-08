@@ -6,16 +6,7 @@
           <p class="mr-3">Show</p>
           <select
             id="entries"
-            class="
-              bg-white
-              border border-gray-300
-              text-gray-900 text-sm
-              rounded-lg
-              focus:ring-blue-900 focus:border-blue-900
-              block
-              w-16
-              px-2.5
-            "
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-16 px-2.5"
           >
             <option selected value="10">10</option>
             <option value="15">15</option>
@@ -30,34 +21,14 @@
             <input
               type="text"
               id="simple-search"
-              class="
-                bg-gray-50
-                border border-gray-300
-                text-gray-900 text-sm
-                rounded-lg
-                focus:ring-blue-900 focus:border-blue-900
-                block
-                w-full
-                px-2.5
-              "
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-full px-2.5"
               placeholder="Search"
               required
             />
           </div>
           <button
             type="submit"
-            class="
-              p-2.5
-              ml-2
-              text-sm
-              font-medium
-              text-white
-              bg-blue-900
-              rounded-lg
-              border border-blue-900
-              hover:bg-blue-800
-              focus:ring-4 focus:outline-none focus:ring-blue-300
-            "
+            class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-900 rounded-lg border border-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
           >
             <svg
               class="w-5 h-5"
@@ -112,132 +83,33 @@
         </table>
       </div>
 
-      <nav aria-label="navigation" class="mt-10 flex justify-end">
-        <ul class="inline-flex -space-x-px">
-          <li>
-            <a
-              href="#"
-              class="
-                py-2
-                px-3
-                ml-0
-                leading-tight
-                text-gray-500
-                bg-white
-                rounded-l-lg
-                border border-gray-300
-                hover:bg-gray-100 hover:text-gray-700
-              "
-              >Previous</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              aria-current="page"
-              class="
-                py-2
-                px-3
-                text-blue-600
-                bg-blue-50
-                border border-gray-300
-                hover:bg-blue-100 hover:text-blue-700
-              "
-              >1</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="
-                py-2
-                px-3
-                leading-tight
-                text-gray-500
-                bg-white
-                border border-gray-300
-                hover:bg-gray-100 hover:text-gray-700
-              "
-              >2</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="
-                py-2
-                px-3
-                leading-tight
-                text-gray-500
-                bg-white
-                border border-gray-300
-                hover:bg-gray-100 hover:text-gray-700
-              "
-              >3</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="
-                py-2
-                px-3
-                leading-tight
-                text-gray-500
-                bg-white
-                border border-gray-300
-                hover:bg-gray-100 hover:text-gray-700
-              "
-              >4</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="
-                py-2
-                px-3
-                leading-tight
-                text-gray-500
-                bg-white
-                border border-gray-300
-                hover:bg-gray-100 hover:text-gray-700
-              "
-              >5</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="
-                py-2
-                px-3
-                leading-tight
-                text-gray-500
-                bg-white
-                rounded-r-lg
-                border border-gray-300
-                hover:bg-gray-100 hover:text-gray-700
-              "
-              >Next</a
-            >
-          </li>
-        </ul>
-      </nav>
+      <div class="flex justify-end mt-20">
+        <vue-awesome-paginate
+          :total-items="custLength"
+          :items-per-page="10"
+          :max-pages-shown="5"
+          :current-page="1"
+          :on-click="onClickHandler"
+        />
+      </div>
     </section>
   </AdminLayout>
 </template>
 
 <script lang="ts">
 import AdminLayout from "../components/AdminLayout.vue";
-import { customersStore } from "../store/customersStore";
+import { customersStore } from "../store/customersStore"
+import { ref } from "vue";
+;
 export default {
   components: { AdminLayout },
 
   setup() {
     const store = customersStore();
+    const custLength = store.customers.length;
     const customers = store.fetchCustomers();
     const allCustomers = store.getCustomers;
+
 
     const dateParser = (value: string) => {
       const date = new Date(value);
@@ -249,13 +121,23 @@ export default {
         minute: "2-digit",
       });
     };
+    
+    const currentProductPage = ref(store.customers.slice(0, 20));
+    const onClickHandler = (page: number) => {
+      const start = (page - 1) * 20;
+      const end = page * 20;
+      currentProductPage.value = store.customers.slice(start, end);
+    };
     return {
       customers,
       dateParser,
+      onClickHandler,
       allCustomers,
+      custLength
     };
   },
 };
+
 </script>
 
 <style></style>
