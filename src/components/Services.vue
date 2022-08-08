@@ -1,6 +1,6 @@
 <template>
   <section
-    class="bg-white-500 h-2/3 py-10 xl:py-20 flex items-center justify-between px-10 xl:px-64"
+    class="bg-blue-50 h-2/3 py-10 xl:py-20 flex items-center justify-between px-10 xl:px-64"
   >
     <div>
       <h3 class="text-2xl xl:text-4xl font-semibold">Our services</h3>
