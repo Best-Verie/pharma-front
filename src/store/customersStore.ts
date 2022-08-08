@@ -21,7 +21,9 @@ export const customersStore = defineStore('customers', {
           })
           .then((response) => {
             if (response.data.success === true) {
+              // console.log("resp",response.data.data)
               this.customers = response.data.data;
+              console.log(this.customers)
             }
           });
       } catch (error) {

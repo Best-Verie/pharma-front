@@ -6,16 +6,7 @@
           <p class="mr-3">Show</p>
           <select
             id="entries"
-            class="
-              bg-white
-              border border-gray-300
-              text-gray-900 text-sm
-              rounded-lg
-              focus:ring-blue-900 focus:border-blue-900
-              block
-              w-16
-              px-2.5
-            "
+            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-16 px-2.5"
           >
             <option selected value="10">10</option>
             <option value="15">15</option>
@@ -30,34 +21,14 @@
             <input
               type="text"
               id="simple-search"
-              class="
-                bg-gray-50
-                border border-gray-300
-                text-gray-900 text-sm
-                rounded-lg
-                focus:ring-blue-900 focus:border-blue-900
-                block
-                w-full
-                px-2.5
-              "
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-full px-2.5"
               placeholder="Search"
               required
             />
           </div>
           <button
             type="submit"
-            class="
-              p-2.5
-              ml-2
-              text-sm
-              font-medium
-              text-white
-              bg-blue-900
-              rounded-lg
-              border border-blue-900
-              hover:bg-blue-800
-              focus:ring-4 focus:outline-none focus:ring-blue-300
-            "
+            class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-900 rounded-lg border border-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
           >
             <svg
               class="w-5 h-5"
@@ -107,15 +78,7 @@
               <td class="px-6 py-4">{{ orderItem.delivery_fee }} RWF</td>
               <td class="px-6 py-4">
                 <span
-                  class="
-                    bg-yellow-100
-                    text-yellow-800 text-xs
-                    font-semibold
-                    mr-2
-                    px-2.5
-                    py-0.5
-                    rounded
-                  "
+                  class="bg-yellow-100 text-yellow-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded"
                   >{{ orderItem.status }}</span
                 >
               </td>
@@ -130,6 +93,15 @@
           </tbody>
         </table>
       </div>
+      <div class="flex justify-end mt-20">
+        <vue-awesome-paginate
+          :total-items="orderLn"
+          :items-per-page="10"
+          :max-pages-shown="5"
+          :current-page="1"
+          :on-click="onClickHandler"
+        />
+      </div>
     </section>
   </AdminLayout>
 </template>
@@ -138,6 +110,7 @@
 import AdminLayout from "../components/AdminLayout.vue";
 import router from "../router";
 import { orderStore } from "../store/orderStore";
+import {ref} from 'vue';
 export default {
   components: { AdminLayout },
   setup() {
@@ -146,8 +119,17 @@ export default {
     const handleOrderDetails = ({ orderItem }: any) => {
       router.push(`/order/${orderItem.id}`);
     };
+    const orderLn = storeOrder.order.length;
+    const currentOrderPage = ref(storeOrder.order.slice(0, 20));
+    const onClickHandler = (page: number) => {
+      const start = (page - 1) * 20;
+      const end = page * 20;
+      currentOrderPage.value = storeOrder.order.slice(start, end);
+    };
     return {
       storeOrder,
+      orderLn,
+      onClickHandler,
       handleOrderDetails,
     };
   },
