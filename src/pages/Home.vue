@@ -4,17 +4,11 @@
     <section class="px-4 xl:px-20 py-10">
       <HeroProductList :heroProducts="heroProducts" />
     </section>
-    
-    <Services/>
+
+    <Services />
     <section class="px-10 xl:px-64 py-10 mt-20">
       <div
-        class="
-          flex
-          xl:items-center xl:justify-between
-          mb-24
-          flex-col
-          xl:flex-row
-        "
+        class="flex xl:items-center xl:justify-between mb-24 flex-col xl:flex-row"
       >
         <h2 class="flex flex-col">
           <span class="font-medium text-4xl mb-2"> Popular Products </span>
@@ -27,44 +21,17 @@
         </router-link>
       </div>
       <div
-        class="
-          grid grid-cols-1
-          md:grid-cols-2
-          lg:grid-cols-3
-          xl:grid-cols-4
-          gap-10
-          relative
-        "
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 relative"
       >
         <ProductCard :products="storeProduct.product.slice(0, 8)" />
       </div>
     </section>
-    <SpecialHero/>
+    <SpecialHero />
     <section
-      class="
-        bg-stone-100
-        px-10
-        lg:px-52
-        py-20
-        flex flex-col
-        xl:flex-row
-        justify-between
-        items-center
-      "
+      class="bg-stone-100 px-10 lg:px-52 py-20 flex flex-col xl:flex-row justify-between items-center"
     >
       <div
-        class="
-          bg-white
-          rounded
-          w-96
-          p-5
-          flex
-          mb-10
-          xl:mb-0
-          items-center
-          cursor
-          ml-2
-        "
+        class="bg-white rounded w-96 p-5 flex mb-10 xl:mb-0 items-center cursor ml-2"
       >
         <img src="../assets/icons/shipping.svg" alt="" class="w-16 h-16 mr-5" />
         <div>
@@ -73,18 +40,7 @@
         </div>
       </div>
       <div
-        class="
-          bg-white
-          rounded
-          w-96
-          p-5
-          flex
-          mb-10
-          xl:mb-0
-          items-center
-          cursor
-          ml-2
-        "
+        class="bg-white rounded w-96 p-5 flex mb-10 xl:mb-0 items-center cursor ml-2"
       >
         <img src="../assets/icons/money.svg" alt="" class="w-16 h-16 mr-5" />
 
@@ -94,18 +50,7 @@
         </div>
       </div>
       <div
-        class="
-          bg-white
-          rounded
-          w-96
-          p-5
-          flex
-          mb-10
-          xl:mb-0
-          items-center
-          cursor
-          ml-2
-        "
+        class="bg-white rounded w-96 p-5 flex mb-10 xl:mb-0 items-center cursor ml-2"
       >
         <img src="../assets/icons/lock.svg" alt="" class="w-16 h-16 mr-5" />
 
@@ -115,7 +60,7 @@
         </div>
       </div>
     </section>
-    <ContactMessage/>
+    <ContactMessage />
   </ClientLayout>
 </template>
 
@@ -150,8 +95,8 @@ export default {
     ClientLayout,
     ContactMessage,
     SpecialHero,
-    Services
-},
+    Services,
+  },
   setup() {
     const heroProducts = ref<HeroProduct[]>([
       {
