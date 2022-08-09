@@ -98,9 +98,8 @@
 
 <script lang="ts">
 import AdminLayout from "../components/AdminLayout.vue";
-import { customersStore } from "../store/customersStore"
+import { customersStore } from "../store/customersStore";
 import { ref } from "vue";
-;
 export default {
   components: { AdminLayout },
 
@@ -109,7 +108,6 @@ export default {
     const custLength = store.customers.length;
     const customers = store.fetchCustomers();
     const allCustomers = store.getCustomers;
-
 
     const dateParser = (value: string) => {
       const date = new Date(value);
@@ -121,7 +119,7 @@ export default {
         minute: "2-digit",
       });
     };
-    
+
     const currentProductPage = ref(store.customers.slice(0, 20));
     const onClickHandler = (page: number) => {
       const start = (page - 1) * 20;
@@ -133,11 +131,10 @@ export default {
       dateParser,
       onClickHandler,
       allCustomers,
-      custLength
+      custLength,
     };
   },
 };
-
 </script>
 
 <style></style>

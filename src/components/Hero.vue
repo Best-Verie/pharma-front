@@ -1,6 +1,16 @@
 <template>
   <section
-    class="bg-blue-50 h-2/3 py-10 xl:py-20 flex items-center justify-between px-10 xl:px-64"
+    class="
+      bg-blue-50
+      h-2/3
+      py-10
+      xl:py-20
+      flex
+      items-center
+      justify-between
+      px-10
+      xl:px-64
+    "
   >
     <div>
       <h1 class="text-2xl xl:text-7xl font-semibold">
@@ -8,10 +18,16 @@
       </h1>
       <p class="text-zinc-500 italic pl-5 text-xl mt-5 xl:w-96">Since 2020</p>
       <div class="flex items-center mt-5">
-        <button class="bg-blue-500 text-white rounded-full px-8 py-3">
+        <button
+          class="bg-blue-500 text-white rounded-full px-8 py-3"
+          @click="goToShop"
+        >
           Shop now +
         </button>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 83619377d1ffc82ecb9beb4bb0e607d795ffa419
       </div>
     </div>
     <img
@@ -22,8 +38,15 @@
   </section>
 </template>
 
-<script lang="ts">
-export default {};
+<script>
+export default {
+  name: "Hero",
+  methods: {
+    goToShop() {
+      this.$router.push("/shop");
+    },
+  },
+};
 </script>
 
 <style></style>
