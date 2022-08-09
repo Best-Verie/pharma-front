@@ -6,7 +6,7 @@
           <p class="mr-3">Show</p>
           <select
             id="entries"
-            class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-16 px-2.5"
+            class="bg-white h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-16 px-2.5"
           >
             <option selected value="10">10</option>
             <option value="15">15</option>
@@ -21,7 +21,7 @@
             <input
               type="text"
               id="simple-search"
-              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-full px-2.5"
+              class="bg-gray-50 border h-10 border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-full px-2.5"
               placeholder="Search"
               required
             />

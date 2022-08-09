@@ -38,6 +38,7 @@ export default {
     };
   },
   components: { AdminLayout },
+  
   setup() {
     const storeOffer = offerStore();
 

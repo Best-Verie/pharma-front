@@ -6,16 +6,7 @@
           <p class="mr-3">Show</p>
           <select
             id="entries"
-            class="
-              bg-white
-              border border-gray-300
-              text-gray-900 text-sm
-              rounded-lg
-              focus:ring-blue-900 focus:border-blue-900
-              block
-              w-16
-              px-2.5
-            "
+            class="bg-white h-8 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-16 px-2.5"
           >
             <option selected value="10">10</option>
             <option value="15">15</option>
@@ -30,34 +21,14 @@
             <input
               type="text"
               id="simple-search"
-              class="
-                bg-gray-50
-                border border-gray-300
-                text-gray-900 text-sm
-                rounded-lg
-                focus:ring-blue-900 focus:border-blue-900
-                block
-                w-full
-                px-2.5
-              "
+              class="h-10 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-900 focus:border-blue-900 block w-full px-2.5"
               placeholder="Search"
               required
             />
           </div>
           <button
             type="submit"
-            class="
-              p-2.5
-              ml-2
-              text-sm
-              font-medium
-              text-white
-              bg-blue-900
-              rounded-lg
-              border border-blue-900
-              hover:bg-blue-800
-              focus:ring-4 focus:outline-none focus:ring-blue-300
-            "
+            class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-900 rounded-lg border border-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
           >
             <svg
               class="w-5 h-5"
@@ -119,7 +90,7 @@
           </tbody>
         </table>
       </div>
-       <div class="flex justify-end mt-20">
+      <div class="flex justify-end mt-20">
         <vue-awesome-paginate
           :total-items="prodln"
           :items-per-page="20"
@@ -148,8 +119,8 @@ export default {
     const currentProductPage = ref(storeProduct.product.slice(0, 20));
 
     const IMAGE_CDN_URL = IMAGE_CDN;
-    const prodln = storeProduct.product.length
-    console.log(prodln)
+    const prodln = storeProduct.product.length;
+    console.log(prodln);
 
     const dateParser = (value: string) => {
       const date = new Date(value);
@@ -179,7 +150,7 @@ export default {
       onClickHandler,
       IMAGE_CDN_URL,
       handleProductDetails,
-      prodln
+      prodln,
     };
   },
 };
