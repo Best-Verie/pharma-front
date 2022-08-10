@@ -24,10 +24,6 @@
         >
           Shop now +
         </button>
-<<<<<<< HEAD
-
-=======
->>>>>>> 83619377d1ffc82ecb9beb4bb0e607d795ffa419
       </div>
     </div>
     <img

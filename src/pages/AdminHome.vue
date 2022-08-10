@@ -203,6 +203,7 @@ import {
 } from "chart.js";
 import AdminLayout from "../components/AdminLayout.vue";
 import { authStore } from "../store/authStore";
+import {  orderStore } from "../store/orderStore";
 
 ChartJS.register(
   Title,
@@ -284,6 +285,8 @@ export default {
   },
   setup() {
     const store = authStore();
+    const orders = orderStore();
+    const nOfOrders = orders.order.length;
 
     const summaries = ref<Summary[]>([
       {
@@ -291,7 +294,7 @@ export default {
         description: "Weekly sales",
       },
       {
-        title: "520",
+        title: nOfOrders.toString(),
         description: "Orders placed",
       },
       {
