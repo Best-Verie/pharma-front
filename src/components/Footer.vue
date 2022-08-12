@@ -33,7 +33,7 @@
       "
     >
       <p class="pt-4">
-        Copyright 2022 <span class="text-orange-600">Pharma</span>. All rights
+        Copyright 2022 <span class="text-orange-600">Tercera</span>. All rights
         reserved
       </p>
       <div class="flex pt-4 flex-col md:flex-row">
